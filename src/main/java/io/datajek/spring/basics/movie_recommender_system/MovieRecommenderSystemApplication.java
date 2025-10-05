@@ -15,10 +15,12 @@ public class MovieRecommenderSystemApplication {
 	public static void main(String[] args) {
 		//SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 		//ApplicationContext manages the beans and dependencies
-//		ApplicationContext appContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
+		ApplicationContext appContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 
 		//passing name of the filter as constructor argument
-		RecommenderImplementation recommender = new RecommenderImplementation(new CollaborativeFilter());
+//		RecommenderImplementation recommender = new RecommenderImplementation(new CollaborativeFilter());
+		RecommenderImplementation recommender = appContext.getBean(RecommenderImplementation.class);
+
 		//call method to get recommendations
 		String[] result = recommender.recommendMovies("Finding Dory");
 		//display results
