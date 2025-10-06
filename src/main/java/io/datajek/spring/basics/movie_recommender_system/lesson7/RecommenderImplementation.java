@@ -1,27 +1,23 @@
-package io.datajek.spring.basics.movie_recommender_system.lesson1;
+package io.datajek.spring.basics.movie_recommender_system.lesson7;
 
-import io.datajek.spring.basics.movie_recommender_system.lesson2.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RecommenderImplementation {
-    //use filter interface to select filter
-
     @Autowired
-    @Qualifier("CBF")
     private Filter filter;
 
-//    public RecommenderImplementation(@Qualifier("collaborativeFilter") Filter filter) {
-//        super();
-//        this.filter = filter;
-//        System.out.println("Constructor invoked...");
-//    }
+    //constructor injection
+    @Autowired
+    public RecommenderImplementation(@Qualifier("collaborativeFilter") Filter filter) {
+        this.filter = filter;
+        System.out.println("Constructor invoked...");
+    }
 
     public String[] recommendMovies(String movie) {
         //use content based filter to find similar movies
-//        ContentBasedFilter filter = new ContentBasedFilter();
         System.out.println("Name of the filter in use: " + filter + "\n");
 
         String[] results = filter.getRecommendations("Finding Dory");
