@@ -1,21 +1,29 @@
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--  http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd">
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    <context:component-scan-->
+<!--            base-package="io.datajek.spring.basics.movie_recommender_system.lesson15" />-->
+    <context:annotation-config />
 
-    <bean id="contentBasedFilter"
-          class="io.datajek.spring.basics.movie_recommender_system.lesson14.ContentBasedFilter">
+    <bean id="filter"
+          class="io.datajek.spring.basics.movie_recommender_system.lesson15.ContentBasedFilter">
     </bean>
 
-    <bean id="collaborativeFilter"
-          class="io.datajek.spring.basics.movie_recommender_system.lesson14.CollaborativeFilter">
+    <bean id="filter1"
+          class="io.datajek.spring.basics.movie_recommender_system.lesson15.CollaborativeFilter">
     </bean>
 
-    <bean id="recommenderImplementation"
-          class="io.datajek.spring.basics.movie_recommender_system.lesson14.RecommenderImplementation">
-        <!--
-        <property name="filter" ref="contentBasedFilter"/>
-        -->
-        <constructor-arg ref="collaborativeFilter"/>
+    <bean id="recommenderImpl"
+          class="io.datajek.spring.basics.movie_recommender_system.lesson15.RecommenderImplementation">
+<!--        <property name="filter" ref="contentBasedFilter"/>-->
+<!--        <constructor-arg ref="collaborativeFilter"/>-->
     </bean>
 </beans>
